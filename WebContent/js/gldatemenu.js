@@ -150,6 +150,7 @@ Ext.define('gl.DateMenu', {
                 maxDate: new Date(),
                 handler: function(picker, date) {
                     Ext.getCmp('sbtn').setValue(5);
+                    Ext.util.Cookies.set('st',Ext.util.Format.date(date,'Y-m-d'));
                 }
             },{
                 xtype: 'datepicker',
@@ -157,6 +158,7 @@ Ext.define('gl.DateMenu', {
                 maxDate: new Date(),
                 handler: function(picker, date) {
                     Ext.getCmp('sbtn').setValue(5);
+                    Ext.util.Cookies.set('et',Ext.util.Format.date(date,'Y-m-d'));
                 }
             },{
                 xtype: 'panel',
@@ -183,6 +185,10 @@ Ext.define('gl.DateMenu', {
                                     Ext.getCmp('dateend').setValue(today);
                                     window.conf.stime=today;
                                     window.conf.etime=today;
+                                    Ext.util.Cookies.set('st',Ext.util.Format.date(today,'Y-m-d'));
+                                    Ext.util.Cookies.set('et',Ext.util.Format.date(today,'Y-m-d'));
+                                    me.hide();
+                                    Ext.getCmp('id-ctid').initdata();
                                     console.log('click 今日');
                                 }
                             }, {
@@ -193,6 +199,10 @@ Ext.define('gl.DateMenu', {
                                     Ext.getCmp('dateend').setValue(yes);
                                     window.conf.stime=yes;
                                     window.conf.etime=yes;
+                                    Ext.util.Cookies.set('st',Ext.util.Format.date(yes,'Y-m-d'));
+                                    Ext.util.Cookies.set('et',Ext.util.Format.date(yes,'Y-m-d'));
+                                    me.hide();
+                                    Ext.getCmp('id-ctid').initdata();
                                     console.log('click 昨天');
                                 }
                             }, {
@@ -204,6 +214,10 @@ Ext.define('gl.DateMenu', {
                                     Ext.getCmp('dateend').setValue(today);
                                     window.conf.stime=starttime;
                                     window.conf.etime=today;
+                                    Ext.util.Cookies.set('st',Ext.util.Format.date(starttime,'Y-m-d'));
+                                    Ext.util.Cookies.set('et',Ext.util.Format.date(today,'Y-m-d'));
+                                    me.hide();
+                                    Ext.getCmp('id-ctid').initdata();
                                     console.log('click 过去30天:');
                                 }
                             }, {
@@ -215,6 +229,10 @@ Ext.define('gl.DateMenu', {
                                     Ext.getCmp('dateend').setValue(today);
                                     window.conf.stime=starttime;
                                     window.conf.etime=today;
+                                    Ext.util.Cookies.set('st',Ext.util.Format.date(starttime,'Y-m-d'));
+                                    Ext.util.Cookies.set('et',Ext.util.Format.date(today,'Y-m-d'));
+                                    me.hide();
+                                    Ext.getCmp('id-ctid').initdata();
                                     console.log('click 本月:',starttime);
                                 }
                             }, {
@@ -233,6 +251,10 @@ Ext.define('gl.DateMenu', {
 
                                     window.conf.stime=lastmonthdaystart;
                                     window.conf.etime=lastmonthdayend;
+                                    Ext.util.Cookies.set('st',Ext.util.Format.date(lastmonthdaystart,'Y-m-d'));
+                                    Ext.util.Cookies.set('et',Ext.util.Format.date(lastmonthdayend,'Y-m-d'));
+                                    me.hide();
+                                    Ext.getCmp('id-ctid').initdata();
                                     console.log('click 前一个月,stattime:',lastmonthdaystart,'endtime:',lastmonthdayend);
                                 }
                             },{
@@ -260,6 +282,7 @@ Ext.define('gl.DateMenu', {
                                 me.etime = endtime;
                                 //me.setText(starttime.getFullYear()+'-'+(starttime.getMonth()+1)+'-'+starttime.getDate());
                                 me.hide();
+                                Ext.getCmp('id-ctid').initdata();
                                 }
                             }]
                         }

@@ -14,11 +14,12 @@ function funclogin(){
                 Ext.example.msg('错误!', '输入错误的用户名或者密码'); 
             }else{
                 var strarray=backinfo.split('@$');
-                Ext.util.Cookies.set('u',strarray[0]);
-                Ext.util.Cookies.set('k',strarray[1]);
-                Ext.util.Cookies.set('gs',strarray[2]);
-                Ext.util.Cookies.set('gsn',strarray[3]);
-                window.location.href='main.html?theme=neptune';
+                Ext.util.Cookies.set('u',Ext.getCmp('log-userid').getValue());
+                Ext.util.Cookies.set('k',Ext.getCmp('log-passwd').getValue());
+                Ext.util.Cookies.set('gs',strarray[0]);
+                Ext.util.Cookies.set('gsn',strarray[1]);
+                //window.location.href='main.html?theme=neptune';
+                window.location.href='main.html';
                 console.log('login info backstr:'+backinfo);
             }                                
         },
